@@ -251,3 +251,53 @@ function steamrollArray(arr) {
 
 
 steamrollArray([1, [2], [3, [[4]]]]);
+
+_________________________________________________________________________________
+                                                // 9. Binary Agents
+// Return an English translated sentence of the passed binary string.
+//The binary string will be space separated.
+decisión:
+
+function binaryAgent(str) {
+  // Split the binary string into an array of binary numbers
+  const binaryArray = str.split(" ");
+
+  // Convert each binary number to its corresponding character
+  const translatedArray = binaryArray.map((binary) => {
+    // Convert binary to decimal using parseInt with base 2
+    const decimal = parseInt(binary, 2);
+    // Convert decimal to character using String.fromCharCode
+    return String.fromCharCode(decimal);
+  });
+
+  // Join the translated characters into a sentence
+  const translatedSentence = translatedArray.join("");
+
+  return translatedSentence;
+}
+
+binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
+
+_______________________________________________________________________________________________________________________________
+                                             // 10. Everything Be True
+// Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
+// In other words, you are given an array collection of objects. The predicate pre will be an object property and you need to return true if its value is truthy. Otherwise, return false.
+// In JavaScript, truthy values are values that translate to true when evaluated in a Boolean context.
+// Remember, you can access object properties through either dot notation or [] notation.
+decisión:
+
+function truthCheck(coll, pre) {
+  // Check the truthiness of the specified property in each object
+  for (let i = 0; i < coll.length; i++) {
+    // If the property value is falsy or undefined, return false
+    if (!coll[i][pre]) {
+      return false;
+    }
+  }
+
+  // All objects have truthy values for the specified property
+  return true;
+}
+
+
+truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "isBot");
