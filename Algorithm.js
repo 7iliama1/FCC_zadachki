@@ -193,3 +193,25 @@ function smallestCommons(arr) {
 
 smallestCommons([1,5]);
 
+
+_____________________________________________________________________________________________________________________________________
+                                                           // 7. Drop it
+// Given the array arr, iterate through and remove each element starting from the first element (the 0 index) until the function func returns true when the iterated element is passed through it.
+// Then return the rest of the array once the condition is satisfied, otherwise, arr should be returned as an empty array.
+decisión:
+
+function dropElements(arr, func) {
+  // Find the index of the first element that satisfies the condition
+  const index = arr.findIndex(func);
+
+  // If no element satisfies the condition, return an empty array
+  if (index === -1) {
+    return [];
+  }
+
+  // Otherwise, return the remaining elements from the index onwards
+  return arr.slice(index);
+}
+
+
+dropElements([1, 2, 3], function(n) {return n < 3; });
