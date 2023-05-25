@@ -301,3 +301,105 @@ function truthCheck(coll, pre) {
 
 
 truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "isBot");
+
+______________________________________________________________________________________________________________________________
+                                             // 11. Arguments Optional
+// Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum.
+// For example, addTogether(2, 3) should return 5, and addTogether(2) should return a function.
+// Calling this returned function with a single argument will then return the sum:
+                        var sumTwoAnd = addTogether(2);
+// sumTwoAnd(3) returns 5.
+// If either argument isn't a valid number, return undefined.
+decisión:
+
+function addTogether() {
+  const [first, second] = arguments;
+
+  // Check if the first argument is a number
+  if (typeof first === "number") {
+    // If the second argument is also a number, return their sum
+    if (typeof second === "number") {
+      return first + second;
+    }
+    // If only one argument is provided, return a function that expects the second argument
+    if (arguments.length === 1) {
+      return (second) => addTogether(first, second);
+    }
+  }
+}
+
+addTogether(2,3);
+
+________________________________________________________________________________________________________________
+                                              // 12. Make a Person
+// Fill in the object constructor with the following methods below:
+getFirstName()
+getLastName()
+getFullName()
+setFirstName(first)
+setLastName(last)
+setFullName(firstAndLast)
+// Run the tests to see the expected output for each method. The methods that take an argument must accept only one argument and it has to be a string. 
+//These methods must be the only available means of interacting with the object.
+decisión:
+
+let Person = function (firstAndLast) {
+  // Split the full name into first and last names
+  let fullName = firstAndLast.split(" ");
+  let firstName = fullName[0];
+  let lastName = fullName[1];
+
+  // Define getter and setter methods
+
+  // Getter method for retrieving the first name
+  this.getFirstName = function () {
+    return firstName;
+  };
+
+  // Getter method for retrieving the last name
+  this.getLastName = function () {
+    return lastName;
+  };
+
+  // Getter method for retrieving the full name
+  this.getFullName = function () {
+    return firstName + " " + lastName;
+  };
+
+  // Setter method for updating the first name
+  this.setFirstName = function (first) {
+    firstName = first;
+  };
+
+  // Setter method for updating the last name
+  this.setLastName = function (last) {
+    lastName = last;
+  };
+
+  // Setter method for updating the full name
+  this.setFullName = function (firstAndLast) {
+    // Split the new full name into first and last names
+    fullName = firstAndLast.split(" ");
+    firstName = fullName[0];
+    lastName = fullName[1];
+  };
+};
+
+// Example usage
+let person = new Person("John Doe");
+
+console.log(person.getFirstName()); // Output: "John"
+console.log(person.getLastName()); // Output: "Doe"
+console.log(person.getFullName()); // Output: "John Doe"
+
+person.setFirstName("Jane");
+console.log(person.getFullName()); // Output: "Jane Doe"
+
+person.setLastName("Smith");
+console.log(person.getFullName()); // Output: "Jane Smith"
+
+person.setFullName("Alice Cooper");
+console.log(person.getFirstName()); // Output: "Alice"
+console.log(person.getLastName()); // Output: "Cooper"
+
+_________________________________________________________________________________________________________
