@@ -150,5 +150,46 @@ function sumPrimes(num) {
 
 sumPrimes(10);
 
+__________________________________________________________________________________________________________________________________
+                                                        // 6. Smallest Common Multiple
+// Find the smallest common multiple of the provided parameters that can be evenly divided by both, as well as by all sequential numbers in the range between these parameters.
+// The range will be an array of two numbers that will not necessarily be in numerical order.
+// For example, if given 1 and 3, find the smallest common multiple of both 1 and 3 that is also evenly divisible by all numbers between 1 and 3. The answer here would be 6.
+decisión:
 
+function smallestCommons(arr) {
+  // Create a range array containing all the numbers in the given range
+  const range = [];
+  for (let i = Math.min(...arr); i <= Math.max(...arr); i++) {
+    range.push(i);
+  }
+
+  // Function to find the greatest common divisor (GCD) of two numbers
+  function gcd(a, b) {
+    while (b !== 0) {
+      let temp = b;
+      b = a % b;
+      a = temp;
+    }
+    return a;
+  }
+
+  // Function to find the least common multiple (LCM) of two numbers
+  function lcm(a, b) {
+    return (a * b) / gcd(a, b);
+  }
+
+  // Initialize lcmValue to the first number in the range
+  let lcmValue = range[0];
+
+  // Calculate the LCM of lcmValue and each subsequent number in the range
+  for (let i = 1; i < range.length; i++) {
+    lcmValue = lcm(lcmValue, range[i]);
+  }
+
+  return lcmValue;
+}
+
+
+smallestCommons([1,5]);
 
