@@ -106,5 +106,49 @@ function sumFibs(num) {
 }
 sumFibs(4);
 
+_________________________________________________________________________________________________________________________________
+                                                           // 5. Sum All Primes
+// A prime number is a whole number greater than 1 with exactly two divisors: 1 and itself. 
+// For example, 2 is a prime number because it is only divisible by 1 and 2. In contrast, 4 is not prime since it is divisible by 1, 2 and 4.
+// Rewrite sumPrimes so it returns the sum of all prime numbers that are less than or equal to num.
+decisión:
+
+function sumPrimes(num) {
+  let sum = 0;
+
+  // Function to check if a number is prime
+  function isPrime(number) {
+    if (number < 2) {
+      return false;
+    }
+
+    // Iterate from 2 to the square root of the number
+    for (let i = 2; i <= Math.sqrt(number); i++) {
+      // If the number is divisible by i, it's not prime
+      if (number % i === 0) {
+        return false;
+      }
+    }
+
+    // If no divisors found, the number is prime
+    return true;
+  }
+
+  // Iterate through numbers from 2 to num
+  for (let i = 2; i <= num; i++) {
+    // Check if the number is prime using the isPrime function
+    if (isPrime(i)) {
+      // If the number is prime, add it to the sum
+      sum += i;
+    }
+  }
+
+  // Return the sum of prime numbers
+  return sum;
+}
+
+
+sumPrimes(10);
+
 
 
