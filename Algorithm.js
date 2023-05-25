@@ -403,3 +403,48 @@ console.log(person.getFirstName()); // Output: "Alice"
 console.log(person.getLastName()); // Output: "Cooper"
 
 _________________________________________________________________________________________________________
+                                    // 13. Map the Debris
+// According to Kepler's Third Law, the orbital period  T
+// of two point masses orbiting each other in a circular or elliptic orbit is:
+
+
+
+// Return a new array that transforms the elements' average altitude into their orbital periods (in seconds).
+// The array will contain objects in the format {name: 'name', avgAlt: avgAlt}.
+// The values should be rounded to the nearest whole number. The body being orbited is Earth.
+// The radius of the earth is 6367.4447 kilometers, and the GM value of earth is 398600.4418 km3s-2.
+decisión:
+
+function orbitalPeriod(arr) {
+  const GM = 398600.4418; // GM value of Earth
+  const earthRadius = 6367.4447; // Radius of Earth
+
+  // Function to calculate orbital period for each object
+  const calculateOrbitalPeriod = (avgAlt) => {
+    const a = earthRadius + avgAlt; // Semi-major axis
+    const T = Math.round(2 * Math.PI * Math.sqrt(Math.pow(a, 3) / GM)); // Orbital period in seconds
+    return T;
+  };
+
+  // Iterate through the array of objects
+  for (let i = 0; i < arr.length; i++) {
+    const { name, avgAlt } = arr[i];
+    const orbitalPeriodInSeconds = calculateOrbitalPeriod(avgAlt);
+    arr[i] = { name, orbitalPeriod: orbitalPeriodInSeconds }; // Update the object with orbital period
+    delete arr[i].avgAlt; // Remove the avgAlt property
+  }
+
+  return arr;
+}
+
+// Example usage
+const result = orbitalPeriod([
+  { name: "iss", avgAlt: 413.6 },
+  { name: "hubble", avgAlt: 556.7 },
+  { name: "moon", avgAlt: 378632.553 },
+]);
+
+console.log(result);
+
+
+orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
