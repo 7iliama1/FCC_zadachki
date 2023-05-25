@@ -1,5 +1,5 @@
 // 1. Find the missing letter in the passed letter range and return it.
-// If all letters are present in the range, return undefined.
+   // If all letters are present in the range, return undefined.
 decisión:
 
 function fearNotLetter(str) {
@@ -27,9 +27,9 @@ fearNotLetter("abce");
 
 __________________________________________________________________________________________________________________________________________
 // 2. Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
-// In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
-// The unique numbers should be sorted by their original order, but the final array should not be sorted in numerical order.
-// Check the assertion tests for examples.
+   // In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
+   // The unique numbers should be sorted by their original order, but the final array should not be sorted in numerical order.
+   // Check the assertion tests for examples.
 decisión:
 
 function uniteUnique(...arr) {
@@ -74,6 +74,37 @@ function convertHTML(str) {
 
 convertHTML("Dolce & Gabbana");
 
+
+____________________________________________________________________________________________________________________________
+// 4. Given a positive integer num, return the sum of all odd Fibonacci numbers that are less than or equal to num.
+    //The first two numbers in the Fibonacci sequence are 0 and 1. Every additional number in the sequence is the sum of the two previous numbers. The first seven numbers of the Fibonacci sequence are 0, 1, 1, 2, 3, 5 and 8.
+    //For example, sumFibs(10) should return 10 because all odd Fibonacci numbers less than or equal to 10 are 1, 1, 3, and 5.
+decisión:
+
+function sumFibs(num) {
+  let sum = 0;
+  let prevNum = 0;
+  let currNum = 1;
+
+  // Continue looping until the current Fibonacci number exceeds num
+  while (currNum <= num) {
+    // If the current Fibonacci number is odd, add it to the sum
+    if (currNum % 2 !== 0) {
+      sum += currNum;
+    }
+
+    // Calculate the next Fibonacci number
+    const nextNum = prevNum + currNum;
+
+    // Update the previous and current Fibonacci numbers
+    prevNum = currNum;
+    currNum = nextNum;
+  }
+
+  // Return the sum of odd Fibonacci numbers
+  return sum;
+}
+sumFibs(4);
 
 
 
